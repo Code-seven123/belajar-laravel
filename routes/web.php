@@ -27,3 +27,9 @@ Route::get('/home', [homeController::class, 'index']);
 Route::get('/home/tambah', [homeController::class, 'tambahData']);
 
 Route::post('/home/simpan', [homeController::class, 'simpan']);
+
+Route::get('/home/edit/{id}', [homeController::class, 'edit']);
+
+Route::post('/home/update', [homeController::class, 'update']);
+
+Route::get('/home/hapus/{id}', [homeController::class, 'hapus']);

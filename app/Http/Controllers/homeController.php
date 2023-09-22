@@ -32,5 +32,29 @@ class homeController extends Controller
         return redirect('/home');
 
     }
+    
+    public function edit($id){
+        $mahasiswa = DB::table('mahasiswas')->where('id', $id)->get();
+        
+        return view('edit', [
+            'mahasiswa' => $mahasiswa,
+            'title' => 'edit data'
+        ]);
+    }
+    public function update(Request $request){
+        DB::table('mahasiswas')->where('id', $request->id)->update([
+            'nama' => $request->nama,
+            'umur' => $request->umur,
+            'kota' => $request->kota,
+        ]);
 
+        return redirect('/home');
+
+    }
+    
+    public function hapus($id){
+        DB::table('mahasiswas')->where('id', $id)->delete();
+        
+        return redirect('/home');
+    }
 }
